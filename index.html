@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>헬로키티 제주 여행 계획표</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --point-pink: #FF69B4;
+            --soft-pink: #FFF0F5;
+            --main-red: #FF0000;
+            --text-black: #1a1a1a; /* 아주 진한 글자색 */
+        }
+
+        body {
+            font-family: 'Nanum Gothic', sans-serif;
+            background-color: #fce4ec;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border: 10px solid var(--point-pink);
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* 보내주신 이미지 들어가는 부분 */
+        .kitty-header {
+            width: 100%;
+            height: 200px;
+            background-image: url('123.jpg'); /* 이미지 파일명이 123.jpg여야 함 */
+            background-size: cover;
+            background-position: center;
+            border-bottom: 5px solid var(--point-pink);
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--main-red);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        .day-box {
+            margin-bottom: 30px;
+        }
+
+        .day-label {
+            background: var(--main-red);
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .plan-item {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #ffd1dc;
+            padding-bottom: 10px;
+        }
+
+        .time {
+            min-width: 90px;
+            color: var(--main-red);
+            font-weight: 800; /* 시간 강조 */
+            font-size: 1rem;
+        }
+
+        .desc {
+            color: var(--text-black); /* 글씨 아주 잘 보이게 */
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .transport {
+            display: block;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 4px;
+            background: #fff0f5;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: var(--soft-pink);
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            color: var(--point-pink);
+        }
+
+        .bold { font-weight: 800; color: #000; }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <div class="kitty-header"></div>
+        
+        <div class="content">
+            <h1>제주 여행 계획표 🎀</h1>
+
+            <div class="day-box">
+                <div class="day-label">Day 1</div>
+                
+                <div class="plan-item">
+                    <div class="time">08:30</div>
+                    <div class="desc">계양역 → 김포공항 ✈️</div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">09:30</div>
+                    <div class="desc">공항에서 아침 식사 🍚</div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">10:30</div>
+                    <div class="desc">제주행 이륙 (11:45 도착)</div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">12:00</div>
+                    <div class="desc"><span class="bold">신한은행 탐나는전 카드 발급</span></div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">13:30</div>
+                    <div class="desc">점심: <span class="bold">제주에가면 (보말칼국수)</span>
+                        <span class="transport">🚌 버스 20분</span>
+                    </div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">15:00</div>
+                    <div class="desc"><span class="bold">협재 해수욕장</span> (~16:00)
+                        <span class="transport">🚌 버스 1시간 30분</span>
+                    </div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">16:30</div>
+                    <div class="desc"><span class="bold">금오름</span> 산책
+                        <span class="transport">🚕 택시 20분</span>
+                    </div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">18:00</div>
+                    <div class="desc">저녁: <span class="bold">금돈별</span>
+                        <span class="transport">🚕 택시 20분</span>
+                    </div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">19:40</div>
+                    <div class="desc">호텔 더 그랑 중문 체크인 🛌</div>
+                </div>
+            </div>
+
+            <div class="day-box">
+                <div class="day-label">Day 2</div>
+
+                <div class="plan-item">
+                    <div class="time">12:30</div>
+                    <div class="desc"><span class="bold">더클리프 제주</span> (브런치)
+                        <span class="transport">🚕 택시 10분</span>
+                    </div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">14:30</div>
+                    <div class="desc">💖 <span class="bold">헬로키티 아일랜드</span> 💖
+                        <span class="transport">🚕 택시 20분</span>
+                    </div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">17:35</div>
+                    <div class="desc">제주공항 출발 → 김포 🏠</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            행복한 여행 되세요! 🍎🎀🐾
+        </footer>
+    </div>
+
+</body>
+</html>
