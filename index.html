@@ -52,21 +52,21 @@
             background-color: #ffe0ef;
         }
 
-        /* 깃허브에 올린 123.jpg 이미지가 들어갈 부분 */
+        /* 🎀 키티 이미지 크기 대폭 확대! 🎀 */
         .kitty-image {
-            height: 200px;
-            max-width: 160px;
-            width: auto;
+            height: 220px; /* 헤더를 거의 꽉 채우게 높이 확장 */
+            width: auto; /* 비율 그대로 유지 */
+            max-width: 95%; /* 폰 화면에서 잘리지 않게 최대 너비 넉넉히 */
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1;
             transform-origin: bottom center; 
-            object-fit: contain; /* 이미지가 잘리지 않게 보호 */
+            object-fit: contain; 
         }
 
-        /* 터치 유도 말풍선 (UX 향상) */
+        /* 터치 유도 말풍선 */
         .pet-hint {
             position: absolute;
             bottom: 15px;
@@ -79,12 +79,11 @@
             font-weight: 800;
             box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
             z-index: 20;
-            pointer-events: none; /* 클릭 방해 안 함 */
+            pointer-events: none;
             animation: bounce-hint 1.5s infinite;
             transition: opacity 0.3s ease;
         }
 
-        /* 말풍선 꼬리 */
         .pet-hint::after {
             content: '';
             position: absolute;
@@ -95,13 +94,11 @@
             border-color: var(--main-red) transparent transparent transparent;
         }
 
-        /* 말풍선 둥둥 떠다니는 애니메이션 */
         @keyframes bounce-hint {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
 
-        /* 쓰다듬는 중에는 말풍선 숨기기 */
         .kitty-header.is-being-petted .pet-hint {
             opacity: 0;
         }
@@ -291,13 +288,10 @@
         const kittyHeader = document.getElementById('kittyHeader');
 
         const petAction = () => {
-            // 이미 애니메이션이 실행 중이면 중복 실행 방지
             if (kittyHeader.classList.contains('is-being-petted')) return;
 
-            // 애니메이션 클래스 추가
             kittyHeader.classList.add('is-being-petted');
             
-            // 쓰담쓰담 애니메이션 길이에 맞춰(1.5초) 클래스 제거
             setTimeout(() => {
                 kittyHeader.classList.remove('is-being-petted');
             }, 1500); 
