@@ -52,7 +52,7 @@
             background-color: #ffe0ef;
         }
 
-        /* 헬로키티 이미지 */
+        /* 깃허브에 올린 123.jpg 이미지가 들어갈 부분 */
         .kitty-image {
             height: 200px;
             max-width: 160px;
@@ -62,8 +62,48 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1;
-            /* 애니메이션 기준점을 이미지 하단으로 설정하여 눌리는 느낌 강화 */
             transform-origin: bottom center; 
+            object-fit: contain; /* 이미지가 잘리지 않게 보호 */
+        }
+
+        /* 터치 유도 말풍선 (UX 향상) */
+        .pet-hint {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            background-color: var(--main-red);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+            z-index: 20;
+            pointer-events: none; /* 클릭 방해 안 함 */
+            animation: bounce-hint 1.5s infinite;
+            transition: opacity 0.3s ease;
+        }
+
+        /* 말풍선 꼬리 */
+        .pet-hint::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 20px;
+            border-width: 8px 8px 0;
+            border-style: solid;
+            border-color: var(--main-red) transparent transparent transparent;
+        }
+
+        /* 말풍선 둥둥 떠다니는 애니메이션 */
+        @keyframes bounce-hint {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* 쓰다듬는 중에는 말풍선 숨기기 */
+        .kitty-header.is-being-petted .pet-hint {
+            opacity: 0;
         }
 
         /* 쓰다듬을 때 키티가 살짝 눌리는(움찔하는) 효과 */
@@ -73,22 +113,20 @@
 
         @keyframes kitty-squish {
             0%, 100% { transform: translate(-50%, -50%) scale(1, 1); }
-            /* 손이 닿았을 때 살짝 눌림 */
             15%, 75% { transform: translate(-50%, -50%) scale(1.05, 0.93); } 
-            /* 좌우로 쓰다듬을 때 머리도 살짝씩 흔들림 */
             30% { transform: translate(-50%, -50%) scale(1.03, 0.95) rotate(-2deg); }
             45% { transform: translate(-50%, -50%) scale(1.03, 0.95) rotate(2deg); }
             60% { transform: translate(-50%, -50%) scale(1.03, 0.95) rotate(-2deg); }
         }
 
-        /* 쓰담쓰담 하는 손 래퍼 (위치 잡기용) */
+        /* 쓰담쓰담 하는 손 래퍼 */
         .hand-wrapper {
             position: absolute;
-            top: calc(50% - 100px); /* 키티 머리 위쪽 */
+            top: calc(50% - 100px);
             left: 50%;
             z-index: 10;
             opacity: 0;
-            pointer-events: none; /* 클릭 방해 안 함 */
+            pointer-events: none;
         }
 
         /* 귀여운 장갑 모양의 손 */
@@ -100,7 +138,6 @@
             border-radius: 40px 40px 20px 20px;
             position: relative;
             box-shadow: 0 10px 15px rgba(0,0,0,0.15);
-            /* 손가락 디테일 */
             box-sizing: border-box;
         }
 
@@ -124,18 +161,13 @@
         }
 
         @keyframes real-petting {
-            /* 1. 화면 밖 오른쪽 위에서 대기 */
             0% { transform: translate(150px, -100px) rotate(20deg); opacity: 0; }
-            /* 2. 키티 머리 위로 손 안착 */
             15% { transform: translate(-30px, -10px) rotate(-10deg); opacity: 1; }
-            /* 3. 문질문질 (좌우로 왕복) */
             30% { transform: translate(-50px, -10px) rotate(-15deg); opacity: 1; }
             45% { transform: translate(-10px, -10px) rotate(-5deg); opacity: 1; }
             60% { transform: translate(-50px, -10px) rotate(-15deg); opacity: 1; }
             75% { transform: translate(-10px, -10px) rotate(-5deg); opacity: 1; }
-            /* 4. 위로 다시 들어올림 */
             85% { transform: translate(-30px, -40px) rotate(0deg); opacity: 1; }
-            /* 5. 화면 밖으로 퇴장 */
             100% { transform: translate(150px, -100px) rotate(20deg); opacity: 0; }
         }
 
@@ -161,7 +193,9 @@
                 <div class="cute-hand"></div>
             </div>
 
-            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Hello_Kitty_logo.svg/200px-Hello_Kitty_logo.svg.png" class="kitty-image" id="kittyImage" alt="Hello Kitty Figure">
+            <div class="pet-hint">👆 머리를 쓰다듬어봐!</div>
+
+            <img src="123.jpg" class="kitty-image" id="kittyImage" alt="Hello Kitty Figure">
         </div>
         
         <div class="content">
