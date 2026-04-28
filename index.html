@@ -168,6 +168,38 @@
             100% { transform: translate(150px, -100px) rotate(20deg); opacity: 0; }
         }
 
+        /* 깜짝 이벤트 클릭 UX 애니메이션 */
+        .gift-box {
+            display: inline-block;
+            cursor: pointer;
+            color: var(--main-red);
+            font-weight: 800;
+            position: relative;
+            padding: 2px 5px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .gift-box:hover {
+            background-color: #ffe4e1;
+        }
+
+        .gift-icon {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .gift-box.active .gift-icon {
+            transform: translateX(-50%) scale(1.2) translateY(-10px);
+            opacity: 1;
+        }
+
         /* 본문 CSS */
         .content { padding: 25px; }
         h1 { text-align: center; color: var(--main-red); font-size: 1.8rem; margin-bottom: 30px; font-weight: 800; }
@@ -175,8 +207,8 @@
         .day-label { background: var(--main-red); color: white; display: inline-block; padding: 5px 15px; border-radius: 15px; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
         .plan-item { display: flex; margin-bottom: 15px; border-bottom: 1px dashed #ffd1dc; padding-bottom: 10px; }
         .time { min-width: 90px; color: var(--main-red); font-weight: 800; font-size: 1rem; }
-        .desc { color: var(--text-black); font-weight: 700; line-height: 1.4; }
-        .transport { display: block; font-size: 0.85rem; color: #666; margin-top: 4px; background: #fff0f5; padding: 2px 8px; border-radius: 5px; }
+        .desc { color: var(--text-black); font-weight: 700; line-height: 1.4; flex: 1; }
+        .transport { display: block; font-size: 0.85rem; color: #666; margin-top: 4px; background: #fff0f5; padding: 2px 8px; border-radius: 5px; width: fit-content;}
         footer { background: var(--soft-pink); text-align: center; padding: 15px; font-weight: bold; color: var(--point-pink); }
         .bold { font-weight: 800; color: #000; }
     </style>
@@ -223,34 +255,52 @@
 
                 <div class="plan-item">
                     <div class="time">12:40</div>
-                    <div class="desc">점심: <span class="bold">제주에가면</span> (보말칼국수) 🍜
-                        <span class="transport">🚌 버스 20~30분</span>
+                    <div class="desc">점심: <span class="bold">바른갈치 제주공항본점</span> 🐟
+                        <span class="transport">🚌 공항에서 버스 20분</span>
+                    </div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">13:30</div>
+                    <div class="desc">
+                        <span class="gift-box" id="giftBtn">
+                            깜짝 이벤트 힌트 리본! 🎀
+                            <span class="gift-icon">💝</span>
+                        </span>
+                        <span class="transport">🚶 도보 20분</span>
                     </div>
                 </div>
 
                 <div class="plan-item">
                     <div class="time">14:00</div>
+                    <div class="desc">디저트: <span class="bold">모찌마루</span> (과일 모찌) 🍓
+                        <span class="transport">🚌 버스 20분</span>
+                    </div>
+                </div>
+
+                <div class="plan-item">
+                    <div class="time">15:00</div>
                     <div class="desc"><span class="bold">협재 해수욕장</span> (옥빛 바다 산책) 🌊
                         <span class="transport">🚌 버스 1시간 30분</span>
                     </div>
                 </div>
 
                 <div class="plan-item">
-                    <div class="time">16:00</div>
+                    <div class="time">16:30</div>
                     <div class="desc"><span class="bold">금오름</span> (일몰 능선 산책) ⛰️
                         <span class="transport">🚕 택시 20분</span>
                     </div>
                 </div>
 
                 <div class="plan-item">
-                    <div class="time">17:30</div>
+                    <div class="time">18:00</div>
                     <div class="desc">저녁: <span class="bold">별돈별</span> (흑돼지 파티) 🥩
                         <span class="transport">🚕 택시 15~20분</span>
                     </div>
                 </div>
 
                 <div class="plan-item">
-                    <div class="time">19:20</div>
+                    <div class="time">19:40</div>
                     <div class="desc"><span class="bold">호텔더그랑중문</span> 체크인 및 휴식 🛌
                         <span class="transport">🚕 택시 40분</span>
                     </div>
@@ -318,6 +368,7 @@
     </div>
 
     <script>
+        // 키티 쓰담쓰담 로직
         const kittyHeader = document.getElementById('kittyHeader');
 
         const petAction = () => {
@@ -331,6 +382,17 @@
         };
 
         kittyHeader.addEventListener('click', petAction);
+
+        // 이벤트 힌트 박스 클릭 로직
+        const giftBtn = document.getElementById('giftBtn');
+        
+        giftBtn.addEventListener('click', () => {
+            giftBtn.classList.add('active');
+            
+            setTimeout(() => {
+                giftBtn.classList.remove('active');
+            }, 1000);
+        });
     </script>
 
 </body>
